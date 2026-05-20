@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    
+    <div class="dashboard-header">
+        <h1>Admin Dashboard</h1>
+        <a href="/add-project" class="btn btn-add">
+            + Add New Project
+        </a>
+    </div>
+
+    <!-- FLASH MESSAGES ALERTS -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <p class="flash-message" style="background-color: rgba(56, 189, 248, 0.1); border-color: var(--accent); color: var(--accent);">
+                        {{ message }}
+                    </p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="dashboard-list">
+        {% for project in projects %}
+        <div class="dashboard-item">
+            <h2>{{ project.title }}</h2>
+            
+            <div class="dashboard-actions">
+                <a href="/edit/{{ project.id }}" class="btn btn-edit">
+                    Edit
+                </a>
+                <a href="/delete/{{ project.id }}" class="btn btn-delete" onclick="return confirm('Are you sure you want to permanently delete this project?');">
+                    Delete
+                </a>
+            </div>
+        </div>
+        {% else %}
+        <p class="no-projects">No projects found. Tap the button above to add your first one!</p>
+        {% endfor %}
+    </div>
+
+    
+    <div class="dashboard-footer" style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px; text-align: right;">
+        <a href="/logout" class="btn btn-delete" onclick="return confirm('Are you sure you want to logout?');">
+            Logout
+        </a> 
+    </div>
+</div>
+
+<!-- MOVED: Kept inside the block element for clean rendering -->
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const flashContainer = document.querySelector('.flash-messages');
+        
+        if (flashContainer) {
+            setTimeout(() => {
+                flashContainer.style.transition = "opacity 0.6s ease";
+                flashContainer.style.opacity = "0";
+                
+                setTimeout(() => {
+                    flashContainer.remove();
+                }, 600); 
+                
+            }, 2000); // Fades away smoothly after 2 seconds
+        }
+    });
+</script>
+{% endblock %}
