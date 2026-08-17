@@ -334,5 +334,8 @@ def create_tables():
 
 
 if __name__ == "__main__":
-    create_tables()
-    app.run(debug=True)
+    # Binds dynamically to PORT provided by hosting platforms (Heroku, Render, AWS, etc.)
+    # Defaults to port 5000 and debug=True during local development.
+    port = int(os.environ.get("PORT", 5000))
+    debug_mode = os.environ.get("FLASK_ENV") == "development"
+    app.run(host="0.0.0.0", port=port, debug=debug_mode)
