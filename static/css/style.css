@@ -264,6 +264,9 @@ img {
 }
 
 .flash-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
     background: var(--accent-dim);
     border: 1px solid var(--accent);
     color: var(--accent);
@@ -281,8 +284,19 @@ img {
 }
 
 .flash-message::before {
-    content: '// ';
-    opacity: 0.7;
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    background-color: currentColor;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='16' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'%3E%3C/line%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='16' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'%3E%3C/line%3E%3C/svg%3E");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
 }
 
 /* ==========================================================================
@@ -308,6 +322,7 @@ img {
 
 .hero-line {
     display: flex;
+    align-items: center;
     gap: 10px;
     color: var(--muted);
     font-size: 0.95rem;
@@ -315,7 +330,10 @@ img {
 }
 
 .hero-line .prompt {
+    width: 15px;
+    height: 15px;
     color: var(--accent-2);
+    flex-shrink: 0;
 }
 
 .hero-name {
@@ -504,6 +522,9 @@ section {
 }
 
 .project-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     font-family: var(--font-mono);
     font-size: 0.85rem;
     text-decoration: none;
@@ -511,9 +532,11 @@ section {
     transition: color 0.15s;
 }
 
-.project-links a::before {
-    content: '$ ';
-    color: var(--muted);
+.project-links a svg {
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+    flex-shrink: 0;
 }
 
 .project-links a:hover {
@@ -546,14 +569,20 @@ form.shell-form {
 }
 
 .field label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-family: var(--font-mono);
     font-size: 0.8rem;
     color: var(--accent-2);
 }
 
-.field label::after {
-    content: ' =';
-    color: var(--muted);
+.field label svg,
+.form-group label svg {
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+    flex-shrink: 0;
 }
 
 .shell-form input,
@@ -668,14 +697,12 @@ footer {
 }
 
 .form-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-family: var(--font-mono);
     font-size: 0.8rem;
     color: var(--accent-2);
-}
-
-.form-group label::after {
-    content: ' =';
-    color: var(--muted);
 }
 
 .login-form input,

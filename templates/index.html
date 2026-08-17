@@ -17,7 +17,7 @@
             <li><a href="#projects"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>projects/</a></li>
             <li><a href="#contact"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>contact.sh</a></li>
         </ul>
-        <a href="/dashboard" class="nav-admin">$ dashboard</a>
+        <a href="/dashboard" class="nav-admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>dashboard</a>
     </div>
 </nav>
 
@@ -39,10 +39,10 @@
             <span class="win-title">~/christian — zsh</span>
         </div>
         <div class="win-body">
-            <div class="hero-line"><span class="prompt">$</span> whoami</div>
+            <div class="hero-line"><svg class="prompt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg> whoami</div>
             <h1 class="hero-name">Christian</h1>
             <p class="hero-role">Flask developer &amp; frontend designer</p>
-            <div class="hero-line"><span class="prompt">$</span> ./view-projects.sh</div>
+            <div class="hero-line"><svg class="prompt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg> ./view-projects.sh</div>
             <a href="#projects" class="hero-cta">run<span class="cursor"></span></a>
         </div>
     </div>
@@ -79,7 +79,7 @@
 <!-- SKILLS -->
 <section id="skills">
     <div class="section-inner">
-        <span class="eyebrow"><span class="accent">//</span> skills.json</span>
+        <span class="eyebrow"><svg class="eyebrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>skills.json</span>
         <div class="skills-container">
             <span class="skill-chip"><span class="key">"html"</span>: true</span>
             <span class="skill-chip"><span class="key">"css"</span>: true</span>
@@ -107,8 +107,8 @@
                     <h3>{{ project.title }}</h3>
                     <p class="description">{{ project.description }}</p>
                     <div class="project-links">
-                        {% if project.demo %}<a href="{{ project.demo }}" target="_blank" rel="noopener">demo</a>{% endif %}
-                        {% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener">github</a>{% endif %}
+                        {% if project.demo %}<a href="{{ project.demo }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>demo</a>{% endif %}
+                        {% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>github</a>{% endif %}
                     </div>
                 </div>
             </div>
@@ -129,15 +129,15 @@
             <div class="win-body">
                 <form action="/contact" method="POST" class="shell-form">
                     <div class="field">
-                        <label for="name">name</label>
+                        <label for="name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>name</label>
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
                     </div>
                     <div class="field">
-                        <label for="email">email</label>
+                        <label for="email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>email</label>
                         <input type="email" id="email" name="email" placeholder="you@example.com" required>
                     </div>
                     <div class="field">
-                        <label for="message">message</label>
+                        <label for="message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>message</label>
                         <textarea id="message" name="message" placeholder="Say hello..." required></textarea>
                     </div>
                     <button type="submit" class="btn-run">./send.sh</button>
@@ -149,7 +149,4 @@
 
 <!-- FOOTER -->
 <footer>
-    <p>// built with Flask · © 2026 Christian</p>
-</footer>
-
-{% endblock %}
+    <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px;"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>built with Flask · © 2026 Christian</p>

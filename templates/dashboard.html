@@ -7,13 +7,13 @@
 
     <div class="dashboard-header">
         <div>
-            <span class="eyebrow"><span class="accent">#</span> dashboard</span>
+            <span class="eyebrow"><svg class="eyebrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>dashboard</span>
             <h1>Manage Projects</h1>
         </div>
         <div class="dashboard-header-actions">
-            <a href="/" class="btn btn-edit">← home</a>
+            <a href="/" class="btn btn-edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>home</a>
             <a href="/messages" class="btn btn-edit">inbox</a>
-            <a href="/add-project" class="btn btn-add">+ add-project</a>
+            <a href="/add-project" class="btn btn-add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>add-project</a>
         </div>
     </div>
 
@@ -41,7 +41,7 @@
             </div>
         </div>
         {% else %}
-        <p class="no-projects"># No projects found — run add-project to publish your first one.</p>
+        <p class="no-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;vertical-align:-3px;margin-right:6px;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>No projects found — run add-project to publish your first one.</p>
         {% endfor %}
     </div>
 </div>
