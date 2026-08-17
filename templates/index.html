@@ -1,32 +1,29 @@
 {% extends 'base.html' %}
 
-{% block title %}
-My Portfolio
-{% endblock %}
+{% block title %}Christian — Portfolio{% endblock %}
 
 {% block content %}
 
-<!-- NAVBAR & FLASH MESSAGES -->
-
-<!-- NAVBAR -->
-
-<nav>
-
-    <h2>Christian</h2>
-
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-
+<!-- NAV -->
+<nav class="tabbar">
+    <div class="tabbar-brand">
+        <div class="win-dots"><span></span><span></span><span></span></div>
+        <span class="win-label">~/christian</span>
+    </div>
+    <div class="tabbar-right">
+        <ul class="tabbar-tabs">
+            <li><a href="#about"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>about.md</a></li>
+            <li><a href="#skills"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>skills.json</a></li>
+            <li><a href="#projects"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>projects/</a></li>
+            <li><a href="#contact"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>contact.sh</a></li>
+        </ul>
+        <a href="/dashboard" class="nav-admin">$ dashboard</a>
+    </div>
 </nav>
-
 
 {% with messages = get_flashed_messages() %}
     {% if messages %}
-        <div class="flash-messages">
+        <div class="flash-messages" style="margin-top: 80px;">
             {% for message in messages %}
                 <p class="flash-message">{{ message }}</p>
             {% endfor %}
@@ -36,22 +33,35 @@ My Portfolio
 
 <!-- HERO -->
 <section class="hero">
-    <div class="hero-text">
-        <h1>Hello, I'm Christian</h1>
-        <p>Flask Developer & Frontend Designer</p>
-        <a href="#projects">
-            <button>View Projects</button>
-        </a>
+    <div class="win hero-window">
+        <div class="win-bar">
+            <div class="win-dots"><span></span><span></span><span></span></div>
+            <span class="win-title">~/christian — zsh</span>
+        </div>
+        <div class="win-body">
+            <div class="hero-line"><span class="prompt">$</span> whoami</div>
+            <h1 class="hero-name">Christian</h1>
+            <p class="hero-role">Flask developer &amp; frontend designer</p>
+            <div class="hero-line"><span class="prompt">$</span> ./view-projects.sh</div>
+            <a href="#projects" class="hero-cta">run<span class="cursor"></span></a>
+        </div>
     </div>
-</section> <!-- <-- FIXED: Added missing closing tag here -->
+</section>
 
 <!-- ABOUT -->
-<section id="about" class="about">
-    <div class="about-container">
-        <div class="about-image">
-            <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Christian's Profile">
+<section id="about">
+    <div class="section-inner about-container">
+        <div class="win about-photo">
+            <div class="win-bar">
+                <div class="win-dots"><span></span><span></span><span></span></div>
+                <span class="win-title">profile.jpg</span>
+            </div>
+            <div class="win-body">
+                <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Christian's profile photo">
+            </div>
         </div>
         <div class="about-text">
+            <span class="eyebrow"><svg class="eyebrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>about.md</span>
             <h2>About Me</h2>
             <p>
                 I am a passionate web developer focused on building
@@ -67,55 +77,79 @@ My Portfolio
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="skills">
-    <h2>Skills</h2>
-    <div class="skills-container">
-        <div class="skill-card">HTML</div>
-        <div class="skill-card">CSS</div>
-        <div class="skill-card">JavaScript</div>
-        <div class="skill-card">Python</div>
-        <div class="skill-card">Flask</div>
-        <div class="skill-card">Git & GitHub</div>
+<section id="skills">
+    <div class="section-inner">
+        <span class="eyebrow"><span class="accent">//</span> skills.json</span>
+        <div class="skills-container">
+            <span class="skill-chip"><span class="key">"html"</span>: true</span>
+            <span class="skill-chip"><span class="key">"css"</span>: true</span>
+            <span class="skill-chip"><span class="key">"javascript"</span>: true</span>
+            <span class="skill-chip"><span class="key">"python"</span>: true</span>
+            <span class="skill-chip"><span class="key">"flask"</span>: true</span>
+            <span class="skill-chip"><span class="key">"git"</span>: true</span>
+        </div>
     </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="projects">
-    <h2>Projects</h2>
-    <div class="projects-container">
-        {% for project in projects %}
-        <div class="project-card">
-            <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.title }}">
-            <h3>{{ project.title }}</h3>
-            <p>{{ project.description }}</p>
-            <div class="project-buttons">
-                <a href="{{ project.demo }}" target="_blank">
-                    <button>Live Demo</button>
-                </a>
-                <a href="{{ project.github }}" target="_blank">
-                    <button>GitHub</button>
-                </a>
+<section id="projects">
+    <div class="section-inner">
+        <span class="eyebrow"><svg class="eyebrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>projects/</span>
+        <div class="projects-container">
+            {% for project in projects %}
+            <div class="win project-card">
+                <div class="win-bar">
+                    <div class="win-dots"><span></span><span></span><span></span></div>
+                    <span class="win-title">{{ project.title|lower|replace(' ', '-') }}.py</span>
+                </div>
+                <div class="win-body">
+                    <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.title }}">
+                    <h3>{{ project.title }}</h3>
+                    <p class="description">{{ project.description }}</p>
+                    <div class="project-links">
+                        {% if project.demo %}<a href="{{ project.demo }}" target="_blank" rel="noopener">demo</a>{% endif %}
+                        {% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener">github</a>{% endif %}
+                    </div>
+                </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <form action="/contact" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-    </form>
+<section id="contact">
+    <div class="section-inner">
+        <span class="eyebrow"><svg class="eyebrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>contact.sh</span>
+        <div class="win contact-window">
+            <div class="win-bar">
+                <div class="win-dots"><span></span><span></span><span></span></div>
+                <span class="win-title">contact.sh</span>
+            </div>
+            <div class="win-body">
+                <form action="/contact" method="POST" class="shell-form">
+                    <div class="field">
+                        <label for="name">name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="field">
+                        <label for="email">email</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="field">
+                        <label for="message">message</label>
+                        <textarea id="message" name="message" placeholder="Say hello..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-run">./send.sh</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- FOOTER -->
-<!-- FOOTER (WITH RECRUITER-FRIENDLY ADMIN LINK) -->
 <footer>
-    <p>© 2026 Christian Portfolio | <a href="/login" style="color: inherit; text-decoration: none; opacity: 0.6;">Admin</a>| <a href="/signup" style="color: inherit; text-decoration: none; opacity: 0.6;">Sign Up</a></p>
+    <p>// built with Flask · © 2026 Christian</p>
 </footer>
 
-{% endblock %} <!-- <-- FIXED: Added missing block closing tag -->
+{% endblock %}

@@ -4,35 +4,43 @@
 
 {% block content %}
 <div class="login-wrapper">
-    <div class="login-card">
-        <h1>Welcome Back</h1>
-        <p>Please enter your credentials to manage your portfolio</p>
+    <div class="win login-card">
+        <div class="win-bar">
+            <div class="win-dots"><span></span><span></span><span></span></div>
+            <span class="win-title">login.sh</span>
+        </div>
+        <div class="win-body">
+            <h1>Welcome Back</h1>
+            <p>Please enter your credentials to manage your portfolio</p>
 
-        <!-- FLASH MESSAGES ALERT -->
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="flash-messages">
-                    {% for message in messages %}
-                        <p class="flash-message">{{ message }}</p>
-                    {% endfor %}
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for message in messages %}
+                            <p class="flash-message">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <form action="/login" method="POST" class="login-form">
+                <div class="form-group">
+                    <label for="username">username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required autocomplete="off">
                 </div>
-            {% endif %}
-        {% endwith %}
 
-        <!-- LOGIN FORM -->
-        <form action="/login" method="POST" class="login-form">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username" required autocomplete="off">
-            </div>
+                <div class="form-group">
+                    <label for="password">password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="••••••••" required>
-            </div>
+                <button type="submit" class="btn-login">./login</button>
+            </form>
 
-            <button type="submit" class="btn-login">Log In</button>
-        </form>
+            <p class="field-hint" style="margin-top: 20px; text-align: center;">
+                First time here? <a href="/signup" style="color: var(--accent); text-decoration: none;">Create an account</a>
+            </p>
+        </div>
     </div>
 </div>
 {% endblock %}
