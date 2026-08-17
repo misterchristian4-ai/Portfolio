@@ -32,20 +32,29 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 UPLOAD_FOLDER = os.path.join(BASE_DIR, "static", "images")
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif", "webp"}
 
+# Ensure upload directory exists before starting
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+
+# Fallback to local SQLite using absolute path if DATABASE_URL is not set
+default_sqlite = f"sqlite:///{os.path.join(BASE_DIR, 'database.db')}"
+db_url = os.environ.get("DATABASE_URL", default_sqlite)
+
+# Fix SQLAlchemy dialect prefix for PostgreSQL provided by hosts like Render/Heroku
+if db_url.startswith("postgres://"):
+    db_url = db_url.replace("postgres://", "postgresql://", 1)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = db_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-secret-key")
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["MAX_CONTENT_LENGTH"] = 5 * 1024 * 1024  # 5 MB upload limit
 
 # Email notifications for contact-form submissions.
-# Leave MAIL_USERNAME / MAIL_PASSWORD unset to disable email and rely on the
-# dashboard's Messages page instead — submissions are always saved to the
-# database either way.
 app.config["MAIL_SERVER"] = os.environ.get("MAIL_SERVER", "smtp.gmail.com")
 app.config["MAIL_PORT"] = int(os.environ.get("MAIL_PORT", 587))
-app.config["MAIL_USE_TLS"] = True
+app.config["MAIL_USE_TLS"] = os.environ.get("MAIL_USE_TLS", "True").lower() in ("true", "1", "t")
 app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
 app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
 app.config["MAIL_DEFAULT_SENDER"] = os.environ.get("MAIL_USERNAME")
@@ -332,10 +341,10 @@ def create_tables():
     with app.app_context():
         db.create_all()
 
+# Called at top-level so WSGI servers (Gunicorn, Waitress) execute it on boot
+create_tables()
 
 if __name__ == "__main__":
-    # Binds dynamically to PORT provided by hosting platforms (Heroku, Render, AWS, etc.)
-    # Defaults to port 5000 and debug=True during local development.
+    # Runs when starting locally with python app.py
     port = int(os.environ.get("PORT", 5000))
-    debug_mode = os.environ.get("FLASK_ENV") == "development"
-    app.run(host="0.0.0.0", port=port, debug=debug_mode)
+    app.run(host="0.0.0.0", port=port, debug=True)
